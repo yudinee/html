@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 문서내의 box라는 요소의 직계자식의 폰트색을 빨간색으로
+            선택자 중, 아이디를 붙인 선택자는 #을 앞에 표기해야 함
+         */
+        #box > h1{
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <!-- 자식선택자
+     div -> 화면분할 태그   id -> div가 두개이기 때문에 구분해 주기 위한 것 
+    가장 위에 있는 div는 h1 제목1의 부모, h1제목1의 형제는 바로 밑에 있는 div, h1 제목2는 맨 위 div의 자손-->
+
+    <div id="box">
+        <h1>제목1</h1>
+        <div>
+            <h1>제목2</h1>
+        </div>
+    </div>
+
+    
+</body>
+</html>

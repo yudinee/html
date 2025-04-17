@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 후손선택자
+        #box는 자식 div를 의미(안에있는 p까지)
+         */
+         #box div{
+            color: red;
+
+         }
+    </style>
+</head>
+<body>
+    
+    <div id="box">
+        <h1>제목1..이것도 위의div의 자식</h1>
+        <p>자식 문단</p>
+        <div>
+            <p>손자 문단</p>
+        </div>
+    </div>
+    
+</body>
+</html>
