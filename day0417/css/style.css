@@ -1,0 +1,12 @@
+/* 외부css <style>은 html이어서 사용하지 x */
+td{
+    font-size: 9px;
+    color: blue;
+}
+input{
+    background-color: yellow;
+}
+select{
+    background-color: aquamarine;
+    color: red;
+}

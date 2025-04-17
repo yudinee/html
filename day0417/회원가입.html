@@ -1,0 +1,112 @@
+<!-- 8층 2호수 짜리 테이블만들고 맨 밑, 맨 위는 합치기, 맨 위에다가는 회원가입이라고 적기, 가운데 왼쪽 칸에는 아이디,패스워드, 이름, 
+ 이메일(오른쪽에@, 셀렉트박스 포함), 수신여부(오른쪽에 수신여부 라디오박스 만들기), 보유기술(체크박스로 체크하도록)
+  오른쪽에는 입력양식(텍스트 박스), 맨 밑에 합친 곳에 회원가입이라고 적기, 넓이는 500px, 테이블 만들때는 높이는 정하지x
+  -->
+
+
+  
+
+  <!-- align="center" -> 화면 중앙으로 옮기기  placeholder=" " -> 텍스트박스 안에 문구    type="password -> 비밀번호 가리기   maxlength=" " -> 최대길이 제한
+   select -> 선택박스   <option value=""> -> 선택박스 속 옵션 3개 만들면 3개 생김    type="radio" -> 선택가능한 라디오박스(이렇게 하면 양자택일 불가능)
+    name="receive" -> 같은 그룹으로 묶기(양자택일 가능 체크)   type="checkbox" -> 체크박스
+  -->
+
+
+    <!-- css
+     css는 세가지 방법이 있음 인라인css, 내부css, 외부css
+     style="font-size: " -> 폰트 사이즈 조정  -> 반복성이 없을 때만 사용(인라인css), 여러개 같이 적용해야 하는 경우는 head안에 넣기
+     만약 인라인css, 내부css를 같이 쓴다면 인라인css가 적용됨(직접적으로 썼기때문에 우선순위가 부여됨)
+
+     여러페이지에 한 가지 style을 적용할 경우가 생긴다면 유지 보수성을 높이기 위해 외부css를 사용
+      -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>회원가입 폼</title>
+    <!-- css의 세가지 적용 방법 중, 내부 css는 style태그 안에 css의 코드를 작성하는 방법으로 가장 보편적인 적용 방법(여러가지 일괄적용 가능) 
+     -->
+
+     <!-- 내부css td{} -> 현재 문서에 있는 모든 td안에 다 적용   ; -> 그리고의 표시(반드시;로 구분해 줘야 함)  input{} -> input안에 다 적용 -->
+    <!-- <style>
+        td{
+            font-size: 9px;
+            color: blue;
+        }
+        input{
+            background-color: yellow;
+        }
+        select{
+            background-color: aquamarine;
+            color: red;
+        }
+    </style> -->
+
+
+    <!-- 외부css -> 스타일의 재사용성을 높이기 위해, 여러 문서에 걸쳐서 사용되는 css는 공통의 파일로 저장해놓고 재사용 
+     . -> 현재 위치 -->
+     <link rel="stylesheet" href="./css/style.css">
+     
+
+</head>
+<body>
+    <table width="500px" border="1px" align="center">
+        <tr>
+            <td colspan="2" align="center">회원가입</td>
+        </tr>
+        <tr>
+            <td style="font-size: 9px;">ID</td>
+            <td><input type="text" placeholder="아이디를 입력하세요"></td>
+        </tr>
+        <tr>
+            <td style="font-size: 9px">PADSWORD</td>
+            <td><input type="password" placeholder="비밀번호를 입력하세요" maxlength="8"></td>
+        </tr>
+        <tr>
+            <td>이름</td>
+            <td><input type="text" placeholder="이름을 입력하세요"></td>
+        </tr>
+        <tr>
+            <td>이메일</td>
+            <td>
+                <input type="text" placeholder="메일아이디 입력">
+                @
+                <select >
+                    <option value="">구글</option>
+                    <option value="">네이버</option>
+                    <option value="">다음</option>
+                </select>
+
+            </td>
+        </tr>
+        <tr>
+            <td>메일수실여부</td>
+            <td>
+                예<input type="radio" name="receive">
+                아니오<input type="radio" name="receive">
+            </td>
+        </tr>
+        <tr>
+            <td>보유기술</td>
+            <td>
+                Java<input type="checkbox">
+                MySQL<input type="checkbox">
+                Spring<input type="checkbox">
+                Linux<input type="checkbox">
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2" align="center">
+                <button>회원가입</button>
+
+            </td>
+            
+        </tr>
+
+    </table>
+    
+</body>
+</html>
