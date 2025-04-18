@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 아이디는 #, 클래스는 . */
+        #box{
+                background-color: yellow;
+            }
+        .mystyle{
+            color: red;
+        }
+        p[name="photo"]{
+            background-color: green;
+        }
+    </style>
+</head>
+<body>
+    
+    <!-- id -> 중복을 허용하지 않으므로 문서내에 오직 한개만 둬야 한다.
+         class -> 증복 가능, 선택자
+         name ->  중복가능, 선택자-->
+    <p id="box">난 아이디로 식별해</p>
+    <p class="mystyle">난 클래스로 식별해</p>
+    <p class="mystyle">난 클래스로 식별해</p>
+    <p class="mystyle">난 클래스로 식별해</p>
+    <p class="mystyle">난 클래스로 식별해</p>
+    <p name="photo">난 이름으로 식별해</p>
+    <p name="photo">난 이름으로 식별해</p>
+    <p></p>
+</body>
+</html>

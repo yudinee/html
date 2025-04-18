@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* first-letter선택자 -> 첫 글자 스타일 적용
+           first-line선택자 -> 첫 줄 스타일 적용(첫 줄은 브라우저 크기에 다라 상대적임,따라서 변경될 수 있음)
+           selection선택가 -> 드래그하여 텍스트를 선택할 때 선택영역을 지정할 수 있음*/
+        p::first-letter{
+            color: red;
+            font-weight: bold;
+        }
+        p::first-line{
+            color: blue;
+        }
+        p::selection{
+            background-color: pink;
+        }
+    </style>
+</head>
+<body>
+    
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum possimus quam officiis accusamus placeat velit labore dolores fuga incidunt, sint eveniet quod dignissimos ut cumque officia odit voluptatem consequuntur necessitatibus.
+    Quas dolore nemo iure amet accusantium facilis voluptates blanditiis repudiandae corporis excepturi, vitae eaque obcaecati cumque quos saepe, porro ullam aliquam temporibus nisi ipsa. Cupiditate ab in cum ratione praesentium?
+    Dolorem optio labore tempore doloremque excepturi molestias. Ipsam odit eveniet quia laborum consequatur quis. Eligendi omnis, consectetur animi atque vero reprehenderit, quia eos alias voluptas a saepe quis! Itaque, repudiandae!
+    Itaque corrupti labore perspiciatis quisquam ut unde illum a sed dolor accusamus fugit aspernatur, eos ipsum architecto rem blanditiis distinctio voluptatum maxime! Ducimus aperiam accusamus corrupti laudantium iure eaque modi!
+    Qui dignissimos pariatur natus consequuntur architecto nostrum eveniet at ea voluptates delectus quae, porro nihil odit vero fugiat accusamus molestias corrupti molestiae vel deleniti recusandae quisquam accusantium, cum consectetur. Numquam?
+    Nisi deserunt magnam id eveniet sunt quia nulla iure accusantium nostrum quas animi libero totam soluta fuga ipsam, at debitis ex ad adipisci, numquam pariatur, sed a. Deleniti, porro molestiae!
+    Doloribus ullam repellat temporibus ut corrupti. Dignissimos assumenda reiciendis doloribus adipisci veniam non unde itaque rerum voluptatem perspiciatis asperiores quia ea, qui quisquam dolores officia libero suscipit placeat quibusdam ab.
+    Omnis, error, quae, itaque recusandae enim distinctio eligendi officia sit doloribus quaerat odit. Delectus molestiae ad officiis, dolores officia itaque odit, tempore veniam facere eius eligendi. Numquam voluptas corrupti quas!
+    Provident, a temporibus alias sed autem hic tenetur soluta libero ratione iusto veniam at suscipit debitis aliquid maiores voluptate odio eligendi ullam quas necessitatibus rem. Perferendis asperiores dicta quibusdam consequuntur.
+    At fuga nulla maiores nemo temporibus culpa optio repellat odio ab. Accusamus nobis quibusdam autem! Hic, accusantium obcaecati eum qui alias cum dolor officiis adipisci illum harum nihil sint. Minus?
+    </p>
+</body>
+</html>
