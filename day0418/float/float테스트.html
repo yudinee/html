@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box1{
+            width: 200px;
+            height: 200px;
+            background-color: red;
+            float: left; /*인라인이면 요소를 침범하지 않지만 이건 블럭이여서 박스가 침범함
+                            float이후의 요소가 블럭이면 인식을 못함
+                            박스2라는 글씨는 인라인이라 남아있음*/
+        }
+
+        #box2{
+            width: 200px;
+            height: 200px;
+            background-color: yellow;
+            float: left; /*box1과 box2가 같이 float을 사용해서 둘 다 공존 가능*/
+        }
+
+        #footer{
+            width: 400px;
+            height: 50px;
+            background-color: green;
+            float: left;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="box1">박스1</div>
+    <div id="box2">박스2</div>
+    <div id="footer">푸터</div>
+    
+</body>
+</html>
