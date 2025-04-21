@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+        #wrapper{
+            width: 900px;
+            height: 800px;
+            background-color: tomato;
+            margin: auto;
+            
+        }
+
+        #asside{
+            width: 200px;
+            height: 800px;
+            background-color: cadetblue;
+            float: left;
+        }
+
+        #section{
+            width: 700px;
+            height: 800px;
+            background-color: thistle;
+            float: left;
+        }
+
+        #pic{
+            width: 300px;
+            height: 350px;
+            opacity: 1; /*투명도 -> 투명 0~1불투명*/
+            transform: rotate(-30deg); /*각도조절(25deg-> 숫자로 각도 조절, 음수를 써도 됨(좌측으로 돌아간다))*/
+        }
+
+        img{
+            width: 45px;
+        }
+
+    </style>
+    
+
+    <script>
+
+        let wid = 300;
+
+        //현재 여전사 이미지에 적용된 css 중 width의 크기를 높여보자
+        function setWidth() {
+            //문서내의 pic이라 불리는 요소의 스타일 중에서 width를 증가
+        
+            wid += 50;
+            document.querySelector("#pic").style.width= wid + "px";
+
+        }
+
+        function setWidthMinus() {
+            wid -= 50;
+            document.querySelector("#pic").style.width = wid + "px";
+
+        }
+
+        
+        let hei = 350;
+
+        function setHeight() {
+
+            hei += 50;
+            document.querySelector("#pic").style.height = hei + "px";
+        }
+
+        function setHeight2() {
+
+            hei -= 50;
+            document.querySelector("#pic").style.height = hei + "px";
+        }
+
+
+      
+
+        let opa = 1;
+
+        function setOpacity() {
+
+            opa += 0.1;
+            document.querySelector("#pic").style.opacity = opa;
+        }
+
+        function setOpacity2() {
+            //문서내의 pic요소의 스타일 중 투명도 값을 증가시켜 본다.(1에 가까울 수록(증가할 수록) 불투명해 진다.)
+            
+            opa -= 0.1;
+            document.querySelector("#pic").style.opacity= opa;
+        }
+
+        let deg = -30;
+        function setRotate() {
+            //문서내의 pic이라는 요소에 적용된 스타일중에서 rotate값을 증가시켜본다.(시계방향으로 회전)
+            deg += 10;
+            document.querySelector("#pic").style.transform= "rotate(" + deg + "deg)";
+        }
+
+        function setRotate2() {
+            deg -= 10;
+            document.querySelector("#pic").style.transform="rotate(" + deg +"deg)";
+        }
+
+    </script>
+</head>
+<body>
+    
+    <div id="wrapper">
+        <div id="asside">
+            <div>
+                너비 조절
+                <img src="../../../images/warior/plus_btn.png" alt="" onclick="setWidth()">
+                <img src="../../../images/warior/minus_btn.png" alt="" onclick="setWidthMinus()">
+            </div>
+
+            <div>
+                높이 조절
+                <img src="../../../images/warior/plus_btn.png" onclick="setHeight()" alt="">
+                <img src="../../../images/warior/minus_btn.png" onclick="setHeight2()" alt="">
+            </div>
+
+            <div>
+                투명도 조절
+                <img src="../../../images/warior/plus_btn.png" onclick="setOpacity()" alt="">
+                <img src="../../../images/warior/minus_btn.png" onclick="setOpacity2()" alt="">
+            </div>
+
+            <div>
+                각도 조절
+                <img src="../../../images/warior/plus_btn.png" onclick="setRotate()" alt="">
+                <img src="../../../images/warior/minus_btn.png" onclick="setRotate2()" alt="">
+            </div>
+            
+            
+
+
+
+            
+        </div>
+        <div id="section">
+            <img id="pic" src="../../../images/warior/warior.png" alt="">
+        </div>
+        
+    </div>
+</body>
+</html>

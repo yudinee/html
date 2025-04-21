@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+
+        //  let n = 1; -> 전역변수 -> 브라우저가 켜질 때 같이 켜지고 꺼질 때 같이 꺼짐 
+        let n = 0;
+
+        function plus() {
+            n++;
+            console.log("증가합니다." + n);
+        }
+
+        function minus() {
+            n--;
+            console.log("감소합니다." + n);
+        }
+        
+    </script>
+</head>
+<body>
+    <button onclick="plus();">증가</button>
+    <button onclick="minus();">감소</button>
+    
+</body>
+</html>

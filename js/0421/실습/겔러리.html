@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- wrapper w -> 600, h -> 600 -->
+     <style>
+        #wrapper{
+            width: 600px;
+            height: 600px;
+            background-color: yellow;
+            margin: auto; /*화면 정중앙으로*/
+        }
+
+        #header{
+            height: 50px;
+            background-color: aquamarine;
+            /*컨텐츠에 대한 중앙정렬*/
+            text-align: center;
+            line-height: 50px; /*위, 아래 높이 조절*/
+        }
+       
+        #section{
+            height: 550px;
+            background-color: brown;
+        }
+
+        /* 헤더의 자손들 중 첫번째 버튼 (가상클래스 선택자)*/
+        #header button:nth-child(1) {
+            background-color: yellow;
+            width: 80px;
+            height: 45px;
+            border-radius: 5px;/*끝에를 뭉뚝하게*/
+
+        }
+
+         /* 헤더의 자손들 중 두번째 버튼 */
+        #header button:nth-child(2) {
+            background-color: violet;
+            width: 80px;
+            height: 45px;
+            border-radius: 5px;
+            
+        }
+
+        img{
+            width: 100%; /* 100% -> 끝까지 늘려라 */
+            height: 100%; 
+        }
+     </style>
+     <script>
+
+        let n = 1;
+
+        //현재보고 있는 사진의 다음 사진이 나오도록 처리할 예정
+        function next() {
+            //문서내의 img 요소의 src속성 값을 1씩 증가시켜 대입한다.
+            //n++;
+            (n<9)? n++ : n = 9;
+            document.querySelector("#pic").src="../../../images/geographic/animal" + n + ".jpg";
+
+        }
+
+        function prev() {
+            //n--;
+            (n>1)? n-- : n = 1
+            document.querySelector("#pic").src="../../../images/geographic/animal" + n + ".jpg";
+        }
+     </script>
+
+    <script>
+
+    </script>
+</head>
+<body>
+
+    <div id="wrapper">
+        <div id="header">
+            <button onclick="prev()">이전</button>
+            <button onclick="next()">다음</button>
+        </div>
+        <div id="section">
+            <img id="pic" src="../../../images/geographic/animal1.jpg" alt="">
+        </div>
+    </div>
+    
+</body>
+</html>

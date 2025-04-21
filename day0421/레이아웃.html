@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #container {
+            width: 600px;
+            height: 500px;
+            margin: auto; /*양쪽 여백을 계산해서 중앙으로 오게 해줌*/
+        }
+
+        #header {
+            background-color: aquamarine;
+        }
+
+        #aside {
+            background-color: blueviolet;
+            float: left; /*노멀 포지션에서 벗어남*/
+            width: 100px;
+            height: 400px;
+            
+        } 
+        #section {
+            background-color: brown;
+            width: 500px;
+            height: 400px;
+            float: left;/*이걸 안하면 section이 assied를 침범해서 header와 footer의 공간이 남아버림
+            블럭끼리는 같이 띄우면 서로 공존하기 때문에 float:left를 통해서 같이 띄움으로 써 공간을 없앰*/
+            /*block요소를 float시키면 서로 배척하는 성질이 사라짐, 
+            주의 - 인라인으로 변하는 것은 아니다. 만약 float으로 인해 인라인으로 변할 경우
+            width, height가 적용이 안되야 한다. 하지만, block은 float시키면 width, height, margin, padding...다 가능*/
+            
+        }
+        #footer{
+            background-color: yellowgreen;
+            height: 50px;/*footer에 높이를 주면 float으로 인해(빈 공간을 인식하지 못해서) section을 침범해 버림*/
+            clear: both; /*float속성을 삭제해 줌*/
+             /*left 또는 right로 float되어 있는 요소로 인하여 공간이 비어있는 상황에 대해 
+            해당 공간을 강제 인식시키는 속성 따라서 이 속성을 적용하면, float된 공간을 인식해서 파고들어가는 것을 방지해줌*/
+
+        }
+        /* 블락은 같이 띄우면 서로 공존 함 */
+
+    </style>
+</head>
+<body>
+    <!-- div는 블럭, 수평선으로 오지 않고 위 아래로 쌓임 -->
+    <div id="container">
+        <div id="header">header</div>
+        <div id="aside">aside</div>
+        <div id="section">section</div>
+        <div id="footer">footer</div>
+    </div>
+
+</body>
+</html>
