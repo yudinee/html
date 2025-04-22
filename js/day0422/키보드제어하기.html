@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function init() {
+            //이미 자바스크립트 언어 자체적으로 이벤트가 발생할 때마다
+            //해당 이벤트에 대한 모든 정보를 가진 객체를 자동으로 생성해주는데
+            //이 객체를 가리켜 event객체가 한다. 
+            console.log(event.keyCode);
+            //키보드?가 가진 고유의 숫자를 알려줌
+        }
+
+    </script>
+</head>
+<!-- 키보드는 대상이 없어서 body에다가 씀  -->
+ <!-- onkeydown -> 키보드를 눌렀을 때 사용 -->
+<!-- <body onkeydown="alert('너 키 눌렀니?')"> -->
+<body onkeydown="init()">
+    
+</body>
+</html>

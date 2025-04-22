@@ -58,8 +58,15 @@
 
             img.src="../../images/light/switch_" + light + ".png"
 
+            //문서내의 dark요소에 적용된 css중 opacity의 값을 0 또는 1로할 예정
+            dark = document.getElementById("dark"); // getElementById -> id를 가져온다는 뜻(그래서 darkdp #안 붙임)
+            var op = (flag)? 0 : 0.8; //0일 때 불 킴
+            dark.style.opacity = op 
 
         }
+
+
+        
 
     </script>
 </head>
@@ -70,7 +77,7 @@
         </div>
         <div id="section">
             <!-- 이미지를 덮는 div -->
-            <img src="../../images/light/room.jpg" alt="">
+            <img  src="../../images/light/room.jpg" alt="">
             <div id="dark"></div>
             
         </div>
