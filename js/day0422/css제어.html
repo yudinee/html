@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #wrapper{
+            width: 800px;
+            height: 650px;
+            background-color: thistle;
+
+        }
+
+        #asside{
+            width: 200px;
+            height: 650px;
+            float: left;
+            background-color: tan;
+        }
+
+        #section{
+            width: 600px;
+            height: 650px;
+            float: left;
+            background-color: teal;
+        }
+
+        img{
+            width: 50px;
+        }
+        /* 이미지에 마우스가 올라간 상태 마저도 선택자가 될 수 있다. -> 가상클래스 선택자 */
+        img:hover{
+            border:3px solid red;
+            border-radius: 50%;
+            /* border-radius -> 테두리 부드럽게 50 -> 동그랗게  */
+        }
+
+    </style>
+
+    <script>
+
+        //문서내의 pic이라는 아이디를 갖는 요소에 적용되는 css 중 opacity값을 투명하게
+        //0에 가깝도록 음수값을 누적
+        let op = 1; //전역변수로 사용해야 프로그램이 끝날때까지 값이 유지
+        function setOpa() {
+           
+            let pic = document.querySelector("#pic"); //여전사 이미지를 변수에 담음
+            op -= 0.1;
+            pic.style.opacity = op;
+            console.log(op);
+
+        }
+    </script>
+</head>
+<body>
+   
+    <div id="wrapper">
+        <div id="asside">
+            <div> 투명도 조절 <br>
+                <img src="../../images/warior/plus_btn.png">
+                <img src= "../../images/warior/minus_btn.png" onclick="setOpa()">
+            </div>
+        </div>
+        <div id="section">
+            <img id="pic" src="../../images/warior/warior.png" alt="">
+        </div>
+    </div>
+    
+
+</body>
+</html>

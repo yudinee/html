@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #wrapper{
+            width: 900px;
+            height: 600px;
+            background-color: wheat;
+            
+        }
+
+        #asside{
+            width: 200px;
+            height: 100%;
+            float: left;
+            background-color: rgb(180, 228, 230);
+        }
+
+        #section{
+            width: 700px;
+            height: 100%;
+            float: left;
+            background-color: thistle;
+            position: relative; /*자식 때문에(img가 자식).
+            absolute대신 relative를 주는이유 : absolute는 부모의 요소를 고려해야 하는데 굳이 부모를 고려하지 않아도 돼서
+            */
+            background-image: url(../../images/plane/bg.jpg);
+            /*배경은 이미지와 자리싸움x, 뒤에 깔림*/
+
+        }
+
+        button{
+            width: 50px;
+            height: 40px;
+            background-color: slategray;
+            color: white;
+            border-radius: 10px;
+        }
+
+        #hero{
+            width: 40px;
+            position: absolute; /*자신의 부모 요소를 기준으로 배치하겠음(section)의 자식*/
+            left:200px;
+            top:100px;
+        }
+
+        
+    </style>
+
+    <script>
+
+        let x = 200;
+        //문서내의 hero요소에 적용된 css중 position 값 중 left값을 증가
+        function moveRight() {
+            x += 10;
+            let hero = document.querySelector("#hero");
+            hero.style.left= x + "px";
+        }
+
+
+        function moveLeft() {
+            x -= 10;
+            let hero = document.querySelector("#hero");
+            hero.style.left = x + "px";
+        }
+
+        let y = 100;
+        function moveUp() {
+            y -= 10;
+            let hero = document.querySelector("#hero");
+            hero.style.top = y + "px";
+
+        }
+
+        function moveDown() {
+            y += 10;
+            let hero = document.querySelector("#hero");
+            hero.style.top = y + "px";
+        }
+    </script>
+</head>
+<body>
+    <div id="wrapper">
+        <div id="asside">
+            <table>
+                <tr>
+                    <td></td>
+                    <td><button onclick="moveUp()">up</button></td>
+                    <td></td>
+                    
+                </tr>
+                <tr>
+                    <td><button onclick="moveLeft()">left</button></td>
+                    <td><button onclick="moveDown()">down</button></td>
+                    <td><button onclick="moveRight()">right</button></td>
+                </tr>
+            </table>
+        </div>
+        <div id="section">
+            <img id="hero" src="../../images/plane/plane.png" alt="">
+        </div>
+    </div>
+</body>
+</html>

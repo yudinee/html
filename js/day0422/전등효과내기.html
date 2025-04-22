@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        #wrapper{
+            width: 900px;
+            height: 600px;
+            margin: auto;
+        }
+
+        #asside{
+            width: 100px;
+            height: 100%;
+            float: left;
+            background-color: cornflowerblue;
+        }
+
+        #section{
+            width: 800px;
+            height: 100%;
+            float: left;
+            background-color: bisque;
+            position: relative; /*나의 자식 중 하나라도 abolute, relative가 적용되면
+            부모인 내가 기준을 마려해야 하므로 abolute, relative중 하나는 적용해야 한다.*/
+        }
+
+        #section img{
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            left: 0px;
+            top: 0px;
+
+        }
+
+        #dark{
+            width: 100%;
+            height: 100%;
+            background-color: black;
+            /* 부모인 section을 기준으로 위치를 결정하는 absolute로 지정 */
+            position: absolute; /*같은 위치에 공존이 가능하게 함*/
+            left: 0px;
+            top: 0px;
+            opacity: 0.8;
+        }
+    </style>
+
+    <script>
+        let flag = false;
+        function onoff() {
+            flag = !flag;
+            let img = document.querySelector("#lightPic");
+            let light = (flag)? "on" : "off";
+
+            img.src="../../images/light/switch_" + light + ".png"
+
+
+        }
+
+    </script>
+</head>
+<body>
+    <div id="wrapper">
+        <div id="asside">
+            <img id="lightPic" src="../../images/light/switch_off.png"  onclick="onoff()" alt="">
+        </div>
+        <div id="section">
+            <!-- 이미지를 덮는 div -->
+            <img src="../../images/light/room.jpg" alt="">
+            <div id="dark"></div>
+            
+        </div>
+    </div>
+    
+</body>
+</html>
