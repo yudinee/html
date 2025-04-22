@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #wrapper{
+
+        }
+
+        #asside{
+            width: 200px;
+            height: 600px;
+            background-color: bisque;
+            float: left;
+        }
+
+        #section{
+            width: 700px;
+            height: 600px;
+            background-color: rgb(250, 175, 84);
+            background-image: url(../images/plane/bg.jpg);
+            position: relative;
+            float: left;
+        }
+        #pic{
+            width: 50px;
+            height: 50px;
+            top: 200px;
+            left: 100px;
+            position: absolute;
+            
+        }
+        
+    </style>
+
+    <script>
+        let n = 100;
+        function right() {
+            n += 10;
+            let img = document.querySelector("#pic")
+            img.style.left = n + "px";
+        }
+    </script>
+</head>
+<body>
+    <div id="wrapper">
+        <div id="asside">
+            <table>
+                <tr>
+                    <td></td>
+                    <td><button>up</button></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td><button >left</button></td>
+                    <td><button>down</button></td>
+                    <td><button onclick="right()">right</button></td>
+                </tr>
+            </table>
+        </div>
+        <div id="section">
+            <img id="pic" src="../images/plane/plane.png" alt="">
+        </div>
+    </div>
+</body>
+</html>

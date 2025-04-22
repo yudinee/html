@@ -4,139 +4,33 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <!-- wrpper -> w900, h800
-     asside -> w200, h800
-     section -> w700, h800 -->
-
-     <style>
-        #wrapper{
-            width: 900px;
-            height: 800px;
-            background-color: wheat;
-            margin: auto;
+    <style>
+        button{
+            background-color: red;
+            color: yellow;
+            border-radius: 10px;
         }
-
-        #asside{
-            width: 200px;
-            height: 800px;
-            float: left;
-            background-color: thistle;
-        }
-
-        #section{
-            width: 700px;
-            height: 800px;
-            float: left;
-        }
-
-        img{
-            width: 45px;
-        }
-
-        #pic{
-            width: 300px;
-            height:350px;
-            opacity: 1;
-            transform: rotate(-30deg)
-        }
-     </style>
-
-     
-
-     <script>
-
-        let wid = 300;
-
-    function width2() {
-        wid += 50;
-        document.querySelector("#pic").style.width = wid + "px";
-
-    }
-
-
-    function width1() {
-        wid -= 50;
-        document.querySelector("#pic").style.width = wid + "px";
-    }
-
-
-    let opa = 1;
-    function opa1() {
-
-        opa -= 0.1;
-        document.querySelector("#pic").style.opacity = opa;
-
-
-    }
-
-    let deg = -30;
-    function deg1() {
-
-        deg -= 30;
-        document.querySelector("#pic").style.transform = "rotate(" + deg + "deg)"; 
-
-    }
-
+    </style>
     
 
+    <script>
+        let n = 0;
+        function card() {
+            // (n < 4)? n++ : n = 4;
+            n++;
+            (n % 3 == 0)? "joker" : n;
+            let img = document.querySelector("img");
+            img.src="../images/card/h" + n + ".jpg";
+            
 
 
-
-
-
-
-
-    function opa2() {
-        opa += 0.1;
-        document.querySelector("#pic").style.opacity = opa;
-    }
-
-
-    function deg2() {
-        deg += 30;
-        document.querySelector("#pic").style.transform = "rotate(" + deg + "deg)";
-    }
-
-
-
-     </script>
-
-     
-
+        }
+    </script>
 </head>
 <body>
-    
+    <button onclick="card()">다음카드</button>
 
-        <div id="wrapper">
-            <div id="asside">
-                <div>
-                    너비조절
-                    <img onclick="width1()" src="../images/warior/minus_btn.png" alt="">
-                    <img onclick="width2()" src="../images/warior/plus_btn.png" alt="">
-                </div>
-
-                <div>
-                    높이조절
-                    <img src="../images/warior/minus_btn.png" alt="">
-                    <img src="../images/warior/plus_btn.png" alt="">
-                </div>
-                
-                <div>
-                    투명도조절
-                    <img onclick="opa1()" src="../images/warior/minus_btn.png" alt="">
-                    <img onclick="opa2()" src="../images/warior/plus_btn.png" alt="">
-                </div>
-               
-                <div>
-                    각도조절
-                    <img onclick="deg1()" src="../images/warior/minus_btn.png" alt="">
-                    <img onclick="deg2()" src="../images/warior/plus_btn.png" alt="">
-                </div>
-               
-            </div>
-            <div id="section">
-                <img id="pic" src="../images/warior/warior.png" alt="">
-            </div>
-        </div>
+    <img src="../images/card/h1.jpg" alt="">
+    <div></div>
 </body>
 </html>
