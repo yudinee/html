@@ -6,19 +6,21 @@
     <title>Document</title>
     <script>
         let db = prompt("본인의 혈액형을 입력하세요");
+        let mag;
 
         if(db == "A") {
-        document.write("세심하다")//A
+            msg = "세심하다";//A
         }else if(db == "B") {
-            document.write("고집이세다")//B
+            msg = "고집이세다";//B
         }else if(db == "C"){
-            document.write("오지랖이넓다")//C
+            msg = "오지랖이넓다";//C
         }else if(db == "AB"){
-            document.write("결정장애")//AB
+            msg = "결정장애";//AB
         }
         else{  //조건문에 처리하지 않는 그 외의 모든 경우
-            document.write("존재하지 않는 혈액형입니다.")
+            msg = "존재하지 않는 혈액형입니다.";
         }
+        document.write(msg);
         
         
        

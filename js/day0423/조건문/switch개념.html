@@ -1,0 +1,21 @@
+<script>
+    /*
+    switch~case문 : else if와 목적이 동일    
+    */
+   let bd = prompt("혈액형을 입력하세요");
+
+   //() -> 안에 올 수 있는 데이터 -> 숫자, 문자, 논리값
+   //break는 else if문 에서의 else역할, 즉 조건에 해당하지 않는 이외의 경우
+   //break를 주지 않으면 멈추지 않고 계속 나옴
+   //switch문이 else if문을 완전히 대체할 수 없다. case에 올 수 있는 코드는 문자, 숫자, 논리값과 같은 상수만 옴
+   switch(bd) {
+    case"A": document.write("세심한 분이죠");break;
+    case"B": document.write("고집센 분이죠");break;
+    case"AB": document.write("엉뚱한 매력");break;
+    case"O": document.write("사교성 좋은 분");break;
+
+    //case에 지정된 조건 외의 모든 경우 , else if 문의 제일 마지막 단독 else를 의미
+    default:document.write("입력한 혈액형이 지원하지 않습니다.");
+
+   }
+</script>

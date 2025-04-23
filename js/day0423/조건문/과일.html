@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script>
+    let apple;
+    let banana;
+    let mango;
+    let grape;
+    let kiwi;
+    let img;
+
+    function init() {
+
+        
+       img = document.createElement("img");
+       img.src="../../images/fruit/apple.webp";
+
+       apple = document.getElementById("apple");
+       apple.appendChild(img);
+        
+        
+        let comment = prompt("과일명을 입력하세요")
+
+        if(comment = "사과") {
+            apple.appendChild(img);
+        } 
+    }
+   
+    
+</script>
+<body onload="init()">
+    
+</body>
+<div id="apple"></div>
+<div id="banana"></div>
+<div id="mango"></div>
+<div id="grape"></div>
+<div id="kiwi"></div>
+
+
+
+
+</html>

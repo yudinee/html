@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        //프롬포트 무조건 나오지 않게 하기 위해 {}로 막아놓음
+        function showInput(){
+           let n = prompt("과일을 선택하세요\n 1.사과 2.바나나 3.망고 4.포도 5.키위");
+
+           let img = document.querySelector("img");
+
+           img.src="../../images/fruit/banana.webp"
+           
+           
+           //else if문 처리
+           
+           if(n==="사과") {
+            img.src="../../images/fruit/apple.webp"
+           } else if(n=="바나나") {
+             img.src="../../images/fruit/banana.webp"
+           } else if(n==3){
+             img.src="../../images/fruit/mango.webp"
+           } else if(n==4) {
+            img.src="../../images/fruit/grape.webp"
+
+           }else if(n==5) {
+            img.src="../../images/fruit/kiwi.webp"
+           } else {
+            alert("다시 입력하세요");
+           }
+
+
+        }
+    </script>
+</head>
+<body>
+    <button onclick="showInput()">프롬포트 띄우기</button>
+
+    <!-- 처음엔 과일 선택하지 않은 시점이므로, 이미지를 존재만 시키자 
+     즉 src는 비워두자 -->
+     <img>
+     
+    
+</body>
+</html>
