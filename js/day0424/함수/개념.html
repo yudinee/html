@@ -1,0 +1,23 @@
+<script>
+
+//5단 작성
+//내가 쓴 답
+// for(let i=1; i<=9; i++) {
+//     for(let a=5; a<=5; a++) {
+//         document.write(`${a}*${i}=${a*i}`);
+//     }
+//         document.write("<br>")
+// }
+
+
+    //함수란 재사용성이 높은 코드를 대상으로 영역을 지정하여 이름을 붙여놓은 단위
+    //n -> 매개변수
+    function dan(n) {
+        for(let i=1; i<=9; i++) {
+            document.write(`${n}*${i} = ${n*i} <br>`);
+        }
+    }
+    dan(7);//-> 구구단 7단 나옴
+    dan(5);
+   
+</script>

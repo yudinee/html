@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #stage{
+            width: 1000px;
+            height: 800px;
+            margin: auto;
+            background-image: url(../../images/gallerxy/gallerxy/bg.png);
+            position: relative; /*자식의 포지션 속성이 지정되었으므로*/
+
+        }
+    </style>
+    <script>
+
+        let bgY =0;//배경이지이의  y축 포지션의 값을 누적할 전역변수
+
+        //stage에 적용된 css중, backgound-position의 x,y중 y값을 증가
+        function bgEffect() {
+            let stage = document.getElementById("stage");
+            bgY += 2; //2씩 누적(+인 이유 -> 꼭짓점으로 부터 점점 멀어져서, 2만큼씩 내려와라)
+            stage.style.backgroundPosition=`0px ${bgY}px`;
+        }
+
+
+
+        function createEnemy() {
+
+        //5층짜리 20칸만들어라
+        for(let a=1; a<=5; a++) {
+            for(let i=1; i<=20; i++) {
+                
+
+            //먼저 이미지 1개를 생성해 본다.
+            let img = document.createElement("img"); //<img> 작성 효과와 동일
+            img.src="../../images/gallerxy/gallerxy/enemy2.png"
+            img.style.position = "absolute"; //absolute는 stage안에 있게끔 해줌 부모를 기준으로 한 위치 속성, 이거 쓰면 이미지가 겹쳐짐
+            //이미지가 겹쳐지는 이유는 absolute는 부모를 기준으로 위치, absolute를 주면 앞에 뭐가 있던 지
+            //부모를 기준으로 지정된 위치로 다 겹쳐버림, (relative는 겹치지 x)
+            
+            
+            //absolute때문에 겹쳐진 이미지 떨어지게 만들어 줌
+            //왼쪽에서 150만큼 떨어져서 서로 30간격으로(칸수)
+            img.style.left = 150 + (i*30) + "px"; //x축은 호수와 비례하여 증가
+            //위에서부터 200만큼 떨어져
+            img.style.top = 200 +  (a*30) + "px"; //y축은층수와 비례하여 증가
+           
+
+            //이미지를 stage에 부착하자
+            let stage = document.getElementById("stage");
+            stage.appendChild(img); //stage의 자식 요소로 추가
+        }
+            
+            }
+            
+
+
+
+        }
+
+        //프로그램이 가동되자마자 하고싶은 초기화 작업을 위한 함수
+        function init() {
+            //적군 생성
+            createEnemy();
+
+            //브라우저 콘솔에 입력하는 거 말고 자동으로 지정된 함수를 지정한 시간 간격으로
+            //호출해주는 타이머 함수를 호출하자
+            setInterval("bgEffect()",50);// 1/1000초까지 표현 가능(숫자가 작을 수록 빠름)
+
+        }
+
+
+
+    </script>
+</head>
+<body onload="init()">
+    
+    <div id="stage"></div>
+    <img src="../../images/gallerxy/gallerxy/enemy2.png" alt="">
+</body>
+</html>
