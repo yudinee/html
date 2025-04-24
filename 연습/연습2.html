@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #stage{
+            width: 1000px;
+            height: 700px;
+            background-image: url(../images/gallerxy/gallerxy/bg.png);
+            position: relative;
+        }
+    </style>
+    <script>
+        let img;
+        let stage;
+
+        function init() {
+            img = document.createElement("img");
+            img.src="../images/gallerxy/gallerxy/enemy2.png";
+            img.style.position = "abolute";
+
+            stage = document.getElementById("stage");
+            stage.appendChild(img);
+        }
+    </script>
+</head>
+<body>
+    <div id="stage" onload="init()"></div>
+</body>
+</html>
