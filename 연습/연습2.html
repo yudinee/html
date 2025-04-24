@@ -5,28 +5,59 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        #stage{
-            width: 1000px;
-            height: 700px;
-            background-image: url(../images/gallerxy/gallerxy/bg.png);
-            position: relative;
+        #wrapper{
+            width: 700px;
+            height: 600px;
+
         }
+
+        #header{
+            height: 80px;
+            background-color: burlywood;
+        }
+
+        #content{
+            height: 520px;
+            background-color: cadetblue;
+        }
+
+        #header div {
+            width: 100px;
+            height: 100px;
+            float: left;
+        }
+
+        #header div:nth-child(1){background-color: red;}
+        #header div:nth-child(2){background-color: orange;}
+        #header div:nth-child(3){background-color: yellow;}
+        #header div:nth-child(4){background-color: green;}
+        #header div:nth-child(5){background-color: blue;}
+        #header div:nth-child(6){background-color: navy;}
+        #header div:nth-child(7){background-color: purple;}
+
+
+
     </style>
     <script>
-        let img;
-        let stage;
-
-        function init() {
-            img = document.createElement("img");
-            img.src="../images/gallerxy/gallerxy/enemy2.png";
-            img.style.position = "abolute";
-
-            stage = document.getElementById("stage");
-            stage.appendChild(img);
+        function setColor(n) {
+           let color = document.getElementById("content");
+           color.style.background = n;
         }
     </script>
 </head>
 <body>
-    <div id="stage" onload="init()"></div>
+    <div id="wrapper">
+        <div id="header">
+            <div onclick="setColor('red')">빨</div>
+            <div onclick="setColor('orange')">주</div>
+            <div onclick="setColor('yellow')">노</div>
+            <div onclick="setColor('green')">초</div>
+            <div onclick="setColor('blue')">파</div>
+            <div onclick="setColor('navy')">남</div>
+            <div onclick="setColor('purple')">보</div>
+        </div>
+        <div id="content"></div>
+    </div>
+    
 </body>
 </html>
