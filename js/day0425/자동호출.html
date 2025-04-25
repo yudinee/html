@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // setInterval("함수", 호출시간간격) - 지정한 함수를 지정된 간격으로 무한호출
+        // setTimeout("함수", 호출시간간격) - 지정한 함수를 지정된 시간이 흐른 후 호출
+
+        // function test() {
+        //     alert("나불렀어?");
+        // }
+        // //test(); -> test함수 호출
+
+        
+        //2초가 지난 다음에 호출해(한번 호출)
+        // setTimeout("test()", 2000); //1/1000초까지 표현가능 (2000은 2초)
+
+
+        function test() {
+            console.log("나불렀어?");
+
+            //0.1초가 지난 다음에 호출해
+            //재귀호출 방식을 통해서 반복(밖에서 test호출해서 계속 반복)
+            setTimeout("test()",100); //1/1000초까지 표현가능 (0.1초만에 호출)
+        }
+        test();
+        
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

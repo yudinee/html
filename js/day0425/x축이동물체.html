@@ -21,14 +21,34 @@
 
     <script>
         let x = 0;
-        let targetX = 800;
+        let targetX = 500;
         let flag = false;
 
         //문서내의 빨간원의 css중 포지션 left값을 증가시킨다.
         function move(){
+            
+            flag = !flag;
             let box = document.getElementById("box");
-            x += 10;
-            box.style.left = x + "px";
+            // if(x < targetX) {
+            //     x += 10;
+            //     box.style.left = x + "px";
+            // } else {
+            //     x -= 500;
+            //     box.style.left = x + "px";
+            // }
+
+            if(0 > flag || flag > 700) {
+                flag = !flag;
+            } 
+
+            // 또 새로운 if문을 써야 됨
+
+
+            
+
+
+            //let flag = false; 이거 사용해야 함
+           
             
     
 
@@ -47,7 +67,7 @@
            auto.addEventListener("click", function(){
             //자도은 기존의 수동 구현 코드를 일정시간 간격으로 호출하면 됨
             //따라서 언제나 수동 코드를 완성해 놓아햐 함
-            setInterval("move()", 10);
+            setInterval("move()", 50);
            });
         });
     </script>

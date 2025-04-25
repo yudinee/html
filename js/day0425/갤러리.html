@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #wrapper{
+            width: 700px;
+            height: 550px;
+            margin: auto;
+            background-color: beige;
+        }
+
+        #asside{
+            width: 120px;
+            background-color: rgb(25, 67, 68);
+            height: 100%;
+            float: left;
+            /* 내부의 컨텐츠 가운데 정렬(asside자식 요소 가운데 정렬) */
+            text-align: center;
+             /* overflow -> 넘쳐흐르는 컨텐츠, 현재 영역을 넘쳐흐르는 컨텐츠가 있다면 스크롤 처리 */
+             overflow: scroll;
+        }
+
+        #content{
+            width: 580px;
+            background-color: cadetblue;
+            height: 100%;
+            float: left;
+
+        }
+
+        #asside img{
+            width: 100px; /*넓이만 부여하면, html에서 해당 너비에 대한 비율을 유지하여
+            높이를 알아서 설정*/
+            margin-top: 5px; /*부모를 기준으로 위에서부터 5떨어져라*/
+           
+        }
+
+
+    </style>
+    <script>
+        
+        /* 이벤트핸들러 구현을 태그에 직접 작성하는 방법도 있지만,(div나 body, botton에
+        함수 호출하는 것 (ex) onclick, onload...)
+        js의 프로그래밍적 방법으로 이벤트를 연결하는 방법도 있다 .
+        */
+       
+       
+      
+       /*이거 대신 재사용성이 없는 함수는 밑에처럼 사용
+       function test(){
+        alert("로드성공")
+        }
+        
+        addEventListener("load",test() {
+        alert("로드성공")
+        }); 
+        addEventListener -> 원하는 함수를 호출
+        load -> onload대신*/
+        
+        
+        
+        //익명함수
+        /*addEventListener() 메서드(함수)에 두번째 매개변수값으로는 함수가 올 수 있는데
+        이 함수는 딱 그 이벤트 발생시만 호출되는 용도이므로
+        즉 재사용성이 없을 경우, 이름없는 익명함수로 처리한다. */
+        // addEventListener("load",function(){
+            //     alert("로드성공")
+            // }); 
+
+
+
+
+            
+            //태그로 이미지를 일일이 작성하지말고(=정적코드작성), 프로그램실행 시
+            //즉 동적으로 이미지를 생성하여 asside의 자식요소로 부착하자
+            function createThumb() {
+                for(let i=1; i<=9; i++) {
+
+              
+                let img = document.createElement("img"); //<img>와 동일, 단 화면엔 미부착
+                img.src="../../images/geographic/animal" + i + ".jpg"//<img src="">과 동일,  단 화면엔 미부착
+
+
+                //<img onClick="this">
+                //이미지에 클릭 이벤트 연결(프로그래밍적 이벤트 연결)
+                img.addEventListener("click", function(){
+                    //alert("나 눌렀어?");
+                    //우측의 content영역에, 지금 누름 썸네일 이미지의 큰 버전이 나오게 하자
+                   //let content = document.getElementById("content"); 이거대신 밑에
+                //    document.querySelector("#content img").src="../../images/geographic/animal" + i + ".jpg";
+               // console.log("지금 당신이 누른 이미지의 경로는", this.src);
+
+               //this -> img임, 보통 this가 포함된 괄호안에 가장 첫번째가 this임
+                document.querySelector("#content img").src= this.src;
+
+                }); 
+                //"click" -> onclick과 같은 것 (click하면 작동되게)
+                // function() -> 익명함수
+
+     
+                //aside에 붙일거임(img의 부모)
+               let asside = document.getElementById("asside"); //부모 얻기
+               asside.appendChild(img);//img 요소를 자식으로 부착
+    
+     
+     
+            }
+        }
+
+
+
+            //function() -> 재사용성이 없는 함수, addEventListener 이 옆에 재사용성이 있는
+            //함수를 사용할 수도 있는데 대부분 재사용성이 없는 함수로 사용 함
+            addEventListener("load",function(){
+                createThumb(); //썸네일 생성하기
+        }); 
+
+
+
+    </script>
+</head>
+<body>
+
+    <!-- <button id="btn" onclick="document.getElementById('btn').innerText = '나 왕버튼'">나 눌러봐</button> -->
+    <button id="btn" onclick="this.innerText = '나 왕버튼'">나 눌러봐</button>
+    <!-- this -> 물체가 스스로를 가리킬 때 -->
+
+
+    <div id="wrapper">
+        <div id="asside"></div>
+        <div id="content"><img></div>
+        <!-- <img> -> img를 존재만 하게 src비워 높음, 썸네일 눌렀을 때 거기에 
+         그 썸네일 사진을 넣기 위해 -->
+
+         
+       
+    </div>
+</body>
+</html>

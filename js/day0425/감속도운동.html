@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        /* 감속도 운동
+        한번에 목표지점에 도달하는 것이 아니라 점점 간격이 좁아지는 것
+        -공식-
+        내위치 = 현재 내 위치 + a * (목표지점 - 현재 내 위치) ((목표지점 - 현재 내 위치) -> 남은거리)
+        x = x + a*(target - x)
+        */
+
+        let div;
+        let a = 0.1;//비율 계수(기울이)(숫자가 높을수록 투박, 작을 수록 부드러움, 0.1이 가장 부드러움)
+        let targetX = 800; //도달할 목표지점
+
+        //움직임용 함수
+        function move() {
+            //남은 거리의 정해진 비율로 목표지점까지 야금야금 다가갈거야
+            //나의 위치 = 나의 위치 + a(기울기)*(목표지점 - 나의위치 (남은거리))
+            div.style.left = parseInt(div.style.left) + a*(targetX - parseInt(div.style.left)) + "px";
+            setTimeout("move()", 300);
+        }
+
+
+        //생성용 함수
+        function createRect() {
+            div = document.createElement("div") //<div>
+            div.style.background = "red";
+            div.style.width = 50 + "px";
+            div.style.height = 50 + "px";
+            div.style.position = "absolute"; //body여서 부모에 relative안줘도 됨
+            div.style.left = 0 + "px";
+            div.style.top = 100 + "px";
+
+            //이거 안하면 화면에 안보임
+            document.body.appendChild(div);
+        }
+
+
+        /*프로그램 가동가 동시에 물체 생성, 온로드 시점에*/
+        addEventListener("load", function(){
+            createRect(); //물체생성 함수 호출
+            move(); //움직임 함수
+
+        });
+
+    </script>
+</head>
+<body>  
+</body>
+</html>
