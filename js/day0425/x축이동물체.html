@@ -21,13 +21,14 @@
 
     <script>
         let x = 0;
-        let targetX = 500;
         let flag = false;
+        
 
         //문서내의 빨간원의 css중 포지션 left값을 증가시킨다.
         function move(){
             
             flag = !flag;
+            
             let box = document.getElementById("box");
                 x += 10;
                 box.style.left = x + "px";
@@ -35,15 +36,19 @@
 
         }
 
+
         addEventListener("load", function() {
            let m = document.querySelector("#manual");
            let auto = document.querySelector("#auto");
+           
 
            //m에 클릭이벤트 연결
            //수동
            m.addEventListener("click", function(){
             move();
            });
+
+          
            //자동
            auto.addEventListener("click", function(){
             //자도은 기존의 수동 구현 코드를 일정시간 간격으로 호출하면 됨
@@ -56,6 +61,7 @@
 <body>
     <input type="button" value="수동" id="manual">
     <input type="button" value="자동" id="auto">
+    
 
     <div id="box"></div>
 </body>

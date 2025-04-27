@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        #box{
+          #box{
             width: 50px;
             height: 50px;
             border-radius: 50%;
@@ -16,66 +16,38 @@
             left: 0px;
             top: 150px;
         }
-
     </style>
 
     <script>
-        let x = 0;
-        let targetX = 500;
-        let flag = false;
+        let n = 0;
 
-        //문서내의 빨간원의 css중 포지션 left값을 증가시킨다.
-        function move(){
-            
-            flag = !flag;
+        function move() {
+
+            n += 10;
             let box = document.getElementById("box");
-            if(x < targetX) {
-                x += 10;
-                box.style.left = x + "px";
-            } else {
-                x -= 500;
-                box.style.left = x + "px";
-            }
-
-            if(0 > flag || flag > 700) {
-                flag = !flag;
-            } 
-
-            // 또 새로운 if문을 써야 됨
-
-
-            
-
-
-            //let flag = false; 이거 사용해야 함
-           
-            
-    
-
+            box.style.left = n + "px";
         }
 
         addEventListener("load", function() {
-           let m = document.querySelector("#manual");
-           let auto = document.querySelector("#auto");
+            let m = document.getElementById("manual");
+            let au = document.getElementById("auto");
 
-           //m에 클릭이벤트 연결
-           //수동
-           m.addEventListener("click", function(){
-            move();
-           });
-           //자동
-           auto.addEventListener("click", function(){
-            //자도은 기존의 수동 구현 코드를 일정시간 간격으로 호출하면 됨
-            //따라서 언제나 수동 코드를 완성해 놓아햐 함
-            setInterval("move()", 50);
-           });
+            m.addEventListener("click", function() {
+                move();
+
+            });
+
+            au.addEventListener("click", function() {
+                setTimeout("move()", 20);
+            })
         });
     </script>
 </head>
 <body>
-    <input type="button" value="수동" id="manual">
-    <input type="button" value="자동" id="auto">
+   <input type="button" value="수동" id="manual">
+   <input type="button" value="자동" id="auto">
 
-    <div id="box"></div>
+   <div id="box"></div>
+    
 </body>
 </html>
