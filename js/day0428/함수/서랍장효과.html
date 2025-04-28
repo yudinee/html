@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            /* 여백 없애기 */
+            margin: 0px;
+        }
+
+        #rect{
+            height: 150px;
+            background-color: red;
+            /* static 상태일 때 현재위치에서 움직이에 하는 속성 */
+            position: relative;
+            /* style에서 top, left값 쓰면 콘솔에 안먹음
+             제어할거면 script에 해야 함(값이 바뀌어야 하는 경우...?)
+             top: 50px;
+             30px만 남기고 나머지 숨기기 
+            left: -370px; */
+            /* 모서리 둥근 것 없애기 */
+            left :-5px;
+            border-radius: 5px;
+
+        }
+
+    </style>
+
+    <script>
+        let rect;
+        let a = 0.1;
+        let targetW = 350; //튀어나올 목표 너비
+
+
+        //프로그램 가동과 동시에 하고싶은 작업을 하는 함수영역
+        function init() {
+            rect = document.getElementById("rect");
+            //초기값
+            rect.style.width = 30 + "px";
+            
+        }
+
+        function setLength() {
+            //감속도 공식을 꼭 left에만 적용할 수 있는게 아니라 물리적 크기, 위치, 거리 등
+            // 붙일 수 있는 분야는 모두 적용 가능
+
+            //나의너비 = 현재 나의 너비 + 비율계수*(목표너비 - 현재나의너비)
+            rect.style.width = parseFloat(rect.style.width) + a*(targetW - parseFloat(rect.style.width)) + "px";
+
+        }
+
+        function gameLoop() {
+            //길이를 조절하는 함수 끝없이 호출
+            setLength();
+
+        }
+
+        window.addEventListener("load", function() {
+
+            init();
+            //이 시점은 rect를 얻어온 이후 시점이므로 제어하기 위해
+            //mouseover -> 마우스 올릴 때 
+            rect.addEventListener("mouseover", function(){
+                targetW = 350;
+            });
+
+            //mouseout -> 마우스 내릴 때
+            rect.addEventListener("mouseout", function(){
+                targetW = 35;
+            });
+            
+            setInterval("gameLoop()", 20);
+        });
+    </script>
+</head>
+<body>
+
+    <div id="rect"></div>
+    
+</body>
+</html>

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #stage{
+            width: 700px;
+            height: 400px;
+            background-color: yellow;
+            position: relative;
+        }
+    </style>
+
+    <script>
+
+        let rect;
+        //rect의 위치를 결정할 전역변수
+        let x =0; //초기값 (누적시키는 값이여서 전역변수)
+        let flag = true; //방향을 결정하는 변수
+        let autoFlag = false; // 자동호출 여부를 결정짓는 변수
+
+        //load에서 호출한 함수는 load위에 쓰는게 더 좋음(먼저 로드되어야 하기 때문에)
+        function createRect() {
+            rect = document.createElement("div"); //<div>
+            rect.style.width = 30 + "px";
+            rect.style.height = 30 +"px";
+            rect.style.background = "red";
+            rect.style.borderRadius = 50 + "%";
+
+            rect.style.position = "absolute"; //노란색박스(부모) 안에 있어야 하기 때문에
+            rect.style.left = 0 + "px";
+            rect.style.top = 100 + "px";
+            
+            //stage에 부착
+            let stage = document.getElementById("stage");
+            stage.appendChild(rect);
+
+
+        }
+
+        //왔다갔다 움직임 처리
+        function move() {
+
+            //문서내의 rect라는 요소에 적용된 css중 left값을 증가시키다가, 일정시점에 도달시 방향전환
+            if(flag) {
+                x += 5; //5씩 누적
+            } else {
+                x -= 5;
+            }
+
+            if(x>=700 || x<=0) flag = !flag;
+             rect.style.left = x + "px";
+
+             //우측 경계벽을 만나거나 좌측 시작벽을 만나면 방향은 뒤집혀야 한다.
+
+             //if(x==700 || x==0) flag = !flag; -> 증가값이 700에 나누어 떨어지지 않는 경우는 위험
+            
+
+        }
+
+        //자동처리 함수
+        function auto() {
+
+            //atuo()함수는 load시점에 호출됐지만 autoFlag가 false로 되어있어서 
+            //autoFlag를 true로 주고, 그것이 호출되면 move()가 실행 됨
+            //자동이란 이미 작성된 수동코드를 컴퓨터에게 맡기는 것
+            if(autoFlag)move();
+
+
+
+            //setTimeout("auto()", 20); //1회성 호출, 이런 자동함수는 프로그램에서 단 하나만 만들어야 함
+
+            //setInterval("move()", 20); //계속 돌아감
+        }
+
+
+        /*자바스크립트 언어는 2가지 플랫폼으로 개발할 수 있다. 
+        1. 브라우저 기반 js(window = 브라우저)
+         node.js기반 js(global)
+        window -> onload는 window가 생략되어 있음 
+        */
+       window.addEventListener("load", function() {
+         //이벤트 안에는 코드를 많이 짜지 않음(바뀔 수 있기 떄문에), 함수로 빼자
+         //물체 만들기
+         createRect();
+
+         //각 버튼 들의 이벤트 연결하기 
+         document.querySelector("button:nth-child(1)").addEventListener("click", function(){
+            move();
+         });
+
+         document.querySelector("button:nth-child(2)").addEventListener("click", function(){
+            autoFlag = true;
+            auto();
+        });
+
+        document.querySelector("button:nth-child(3)").addEventListener("click", function(){
+            autoFlag = false; //멈추게!!
+        });
+        
+        //멈추지 않는 루프를 하나 실행시키자, setTimeout()은 지정된 시간이 흐르고 나서
+        //함수를 호출한 다음에 자동 소멸하지만, setInterval()은 지정된 시간 간격으로
+        //끝없이 지정된 함수를 호출하는 루프 
+        setInterval("auto()", 20);
+
+
+       });
+ 
+    </script>
+</head>
+<body>
+
+    <button>manual</button>
+    <button>auto</button> 
+    <button>pause</button>
+    <div id="stage">
+        
+    </div>
+
+</body>
+</html>
