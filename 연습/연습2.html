@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            margin: 0px;
+        }
+        #wrapper{
+            height: 900px;
+            width: 100%;
+            background-image: url(../images/bandi/night.jpg);
+            background-size: 100% 100%;
+            position: relative;
+        }
+    </style>
+    <script src="../lib/common.js"></script>
+    <script>
+        let img;
+        let wrapper;
+        let n = 0;
+        let targetX = 600;
+        let targetY = 700;
+        let a = 0.1;
+
+        function setPos() {
+           targetX =  getRandom(11)*100;
+           targetY = getRandom(10)*100;
+
+        }
+
+        function move() {
+            img.style.left = parseFloat(img.style.left) + a*(targetX - parseFloat(img.style.left)) + "px";
+            img.style.top = parseFloat(img.style.top) + a*(targetY - parseFloat(img.style.top)) + "px";
+
+        }
+
+        function gameLoop() {
+            n++;
+            if(n%70 == 0) {
+                setPos();
+            }
+            move();
+        }
+
+        function init() {
+           img = document.createElement("img");
+           img.src = "../images/bandi/bug.png";
+           img.style.width = 40 + "px";
+           img.style.position = "absolute";
+           img.style.left = 100 + "px";
+           img.style.top = 100 + "px";
+
+          wrapper = document.getElementById("wrapper");
+          wrapper.appendChild(img);
+        }
+
+        addEventListener("load", function(){
+            init();
+
+        wrapper.addEventListener("mousedown", function(){
+                targetX = event.clientX;
+                targetY = event.clientY;
+            });
+
+            
+
+            setInterval("gameLoop()", 30);
+        });
+    </script>
+</head>
+<body>
+    <div id="wrapper"></div>
+   
+    
+</body>
+</html>
