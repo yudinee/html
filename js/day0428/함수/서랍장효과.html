@@ -62,6 +62,7 @@
             init();
             //이 시점은 rect를 얻어온 이후 시점이므로 제어하기 위해
             //mouseover -> 마우스 올릴 때 
+            //이건 내가 마우스를 올릴 때만 실행하는 거기 때문에 setInterval()이 먼저 작동
             rect.addEventListener("mouseover", function(){
                 targetW = 350;
             });
