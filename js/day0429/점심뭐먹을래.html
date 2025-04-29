@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../../lib/common.js"></script>
+    <script>
+
+        let foodArray = ["떡볶이", "김밥", "피자", "치킨", "짜장면", "국밥", "칼국수", "쌀국수",
+            "팟타이", "고기"]
+
+        function food() {
+            let div = document.querySelector("div");
+            div.innerText = foodArray[getRandom(foodArray.length-1)];
+        }
+      
+      addEventListener("load", function(){
+        document.querySelector("button").addEventListener("click", function(){
+            food();
+        });
+       
+      });
+    </script>
+</head>
+<body>
+    <button>점심 뭐 먹을래?</button>
+    <div></div>
+</body>
+</html>
