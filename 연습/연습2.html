@@ -5,75 +5,123 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        body{
-            margin: 0px;
-        }
-        #wrapper{
-            height: 900px;
-            width: 100%;
-            background-image: url(../images/bandi/night.jpg);
-            background-size: 100% 100%;
+        #mask{
+            width: 500px;
+            height: 340px;
+            background-color: yellow;
+            border: 2px solid red;
             position: relative;
+            overflow: hidden;
+
+        }
+
+        #wrapper{
+            width: 500px;
+            height: 390px;
+            
+        }
+
+        #footer{
+            width: 100%;
+            height: 80px;
+            position: relative;
+           
         }
     </style>
-    <script src="../lib/common.js"></script>
+
     <script>
         let img;
-        let wrapper;
+        let mask;
         let n = 0;
-        let targetX = 600;
-        let targetY = 700;
+        let dot;
+        let box;
         let a = 0.1;
 
-        function setPos() {
-           targetX =  getRandom(11)*100;
-           targetY = getRandom(10)*100;
+        let arr = ["img0.jpg", "img1.jpg","img2.jpg","img3.jpg","img4.jpg","img5.jpg","img6.jpg" ]
 
-        }
+       
+        function createImg(){
 
-        function move() {
-            img.style.left = parseFloat(img.style.left) + a*(targetX - parseFloat(img.style.left)) + "px";
-            img.style.top = parseFloat(img.style.top) + a*(targetY - parseFloat(img.style.top)) + "px";
 
-        }
+            box = document.createElement("div");
+            box.style.background = "green";
+            //box.style.width =  -> width는 슈렉 이미지의 갯수에 영향을 받음(7개)
+            box.style.width = 500 * arr.length + "px";
+            box.style.height = 340 + "px";
+            box.style.position = "absolute"; 
+            box.style.left =0 + "px"; //자바스크립트에서 제어하기 전에 초기화 
+                                   //css와 호환이 안되는 경우가 많음
+            
+            for(let i=0; i<arr.length; i++) {
 
-        function gameLoop() {
-            n++;
-            if(n%70 == 0) {
-                setPos();
+                
+                img = document.createElement("img");
+                img.src = "../images/shurek/" + arr[i];
+                img.style.width= 500 + "px";
+                img.style.height = 340 + "px";
+                img.style.position = "absolute";
+                img.style.left = i*500 + "px";
+
+                //mask = document.getElementById("mask");
+                box.appendChild(img);
+
             }
+
+            let mask = document.getElementById("mask");
+            mask.appendChild(box); //커다란 이미지 박스를 자식으로 추가
+
+
+        }
+
+        function createNav() {
+
+            for(let i=0; i<arr.length; i++){
+
+            
+            dot = document.createElement("div");
+            dot.style.width = 30 + "px";
+            dot.style.height = 30 + "px";
+            dot.style.borderRadius = 50 + "%";
+            dot.style.position = "absolute";
+             dot.style.left = i * 50 + "px";
+            // dot.style.top = 0 + "px";
+            dot.style.background = "gray";
+        
+            document.getElementById("footer").appendChild(dot);
+            
+            dot.addEventListener("mouseover", function() {
+
+                n=i;
+
+            });
+
+        }
+
+        }
+
+        function gameLoop(){
             move();
         }
 
-        function init() {
-           img = document.createElement("img");
-           img.src = "../images/bandi/bug.png";
-           img.style.width = 40 + "px";
-           img.style.position = "absolute";
-           img.style.left = 100 + "px";
-           img.style.top = 100 + "px";
+        function move() {
 
-          wrapper = document.getElementById("wrapper");
-          wrapper.appendChild(img);
+            box.style.left = parseFloat(box.style.left) + a*((n*-500) - parseFloat(box.style.left)) + "px";
+            //box.style.left = n * -500 + "px";
+           
         }
 
         addEventListener("load", function(){
-            init();
+            createImg();
+            createNav();
+            setInterval("gameLoop()", 10);
 
-        wrapper.addEventListener("mousedown", function(){
-                targetX = event.clientX;
-                targetY = event.clientY;
-            });
-
-            
-
-            setInterval("gameLoop()", 30);
         });
     </script>
 </head>
 <body>
-    <div id="wrapper"></div>
-   
-    
+    <div id="wrapper">
+        <div id="mask"></div>
+        <div id="footer"></div>
+    </div>
 </body>
 </html>
