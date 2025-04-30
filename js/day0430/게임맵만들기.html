@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #stage{
+            width: 1200px;
+            height: 800px;
+            background-image: url(../../images/map/Objects/BG.png);
+            background-size: 1200px 800px;
+            margin: auto;
+            position: relative;
+        }
+    </style>
+
+    <script>
+        let stage;
+        // const -> 상수(변할 수 x)
+        const tree = 1; //앞으로 tree는 1이다.
+        const brick = 2; //벽돌은 2다
+        const box = 3; //박스는 3이다.
+
+        //stage에 올려질 물체의 좌표를 결정할 표(이차원배열)선언
+        let map = [
+            [3,0,0,0,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0,0,0,3,0,0,0,0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0,2,0,0,0,2,0,0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+            [0,0,0,2,0,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,1,0,0,0,1,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+            [0,0,0,1,0,1,0,1,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+        ];
+
+        //게임에 등장할 객체들을 화면에 부착하기 위한 함수
+        function createObject(){
+            //층수 만큼
+            for(let i=0; i<map.length; i++){
+                //호수 만큼 (i번째 층에 몇번째 호수에 와 있냐)
+                for(let a=0; a<map[i].length; a++){
+                    //map의 각 요소에서 추출된 값이 0이 아니면
+                    //(map의층수와 호수가 0이아니면)
+                    if(map[i][a] !=0) {
+ 
+                    let img = document.createElement("img");
+                    //어떤 이미지를 보여줄지를 결정하는 변수
+                    let src;
+                    
+                    //조건 판단 대상이 여러개이고, 대상이 단순한 문자, 숫자, 논리값인 경우
+                    //코드를 짧게 사용하려면 switch문 사용
+                    switch(map[i][a]) {
+                        case tree:src="../../images/map/Objects/Tree.png"; break;
+                        case brick:src="../../images/map/Objects/StoneBlock.png"; break;
+                        case box:src="../../images/map/Objects/Crate.png"; break;
+                    }
+
+                    img.src = src;
+
+                    //임의로 tree사진 넣어 놈 (switch하기 전까지 필요)
+                    //img.src = "../../images/map/Objects/Tree.png";
+                    img.style.width = 50 + "px";
+                    img.style.height = 50 + "px";
+                    img.style.position = "absolute";
+                    //호수만큼
+                    img.style.left = a*50 + "px";  //이거 안하면 absolute때문에 뭉쳐서 나옴
+                    //층수만큼
+                    img.style.top = i*50 + "px";
+
+                stage.appendChild(img);
+                    }
+                }   
+            }
+        }
+
+        function init(){
+            stage = document.getElementById("stage");
+            createObject();
+        }
+
+        addEventListener("load", function(){
+            init();
+        });
+    </script>
+</head>
+<body>
+    <div id="stage"></div>
+</body>
+</html>
