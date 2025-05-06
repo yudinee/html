@@ -88,9 +88,9 @@
             //현재 2차원 배열인 memberArray에 수정하고 싶은 사원을 접근
             //접근하기 위해선 층 즉 currentIndex가 필요함
             memberArray[currnetIndex][0]=form2.empno.value;//사원번호 반영
-            memberArray[currnetIndex][1]=form2.empno.value;//사원이름 반영
-            memberArray[currnetIndex][2]=form2.empno.value;//급여반영
-            memberArray[currnetIndex][3]=form2.empno.value;//커미션반영
+            memberArray[currnetIndex][1]=form2.ename.value;//사원이름 반영
+            memberArray[currnetIndex][2]=form2.sal.value;//급여반영
+            memberArray[currnetIndex][3]=form2.comm.value;//커미션반영
 
             //테이블 다시 출력
             printTable();
@@ -113,7 +113,7 @@
             tag = tag + "<td>ENAME</td>";
             tag = tag + "<td>SAL</td>";
             tag = tag + "<td>COMM</td>";
-            tag = tag + "</td>";
+            tag = tag + "</tr>";
 
             //실제 데이터가 출력될 tr영역
             //2차원배열은 층수와 같으니 층수만큼 반복시킨다.
@@ -125,16 +125,16 @@
                 tag = tag + "<td>" + (i+1) + "</td>";
                 for(let a=0; a<memberArray[i].length; a++){
                     //this는tr
-            tag = tag + "<td>"+ memberArray[i][a]+ "</td>";
-        }
+                    tag = tag + "<td>"+ memberArray[i][a]+ "</td>";
+                }
 
-            tag = tag + "</tr>";
-        }
+                 tag = tag + "</tr>";
+            }
 
              //통계출력(5개를 통합)
             tag = tag + "<tr>";
             tag = tag + "<td colspan = '5' align = 'right'>사원수" + memberArray.length + "명</td>";
-            tag = tag + "</td>";
+            tag = tag + "</tr>";
             tag = tag + "</table>";
 
             content.innerHTML = tag; //모아진 태그를 한꺼번에 출력하자
@@ -169,8 +169,8 @@
             printTable();
             
             //문서로드시 커서를 좌측 입력 최상단에 올려놓아주는 배려
-             //.document.form1.empno.value="사과"; id말고 name으로 하면 부모자식관계를 이렇게 표현할 수 있음
-            form1.empno.focus(); //커서 올려놓기
+            //.document.form1.empno.value="사과"; id말고 name으로 하면 부모자식관계를 이렇게 표현할 수 있음
+            form1.empno.focus(); //커서 올려놓기(focus()는 내장함수)
 
             //등록버튼에 클릭이벤트 연결
             let bt_regist = document.querySelector("#aside1 input[type='button']");
