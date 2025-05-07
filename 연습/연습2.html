@@ -4,37 +4,34 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <script src="./Bullets.js"></script>
-
     <script>
-        let bulletArray = [];
+        let width = 20;
+        let height = 300;
+        let count = 15;
+        let colorArray = ["red", "orange", "yellow", "green", "blue", "navy", "purple"];
 
-        function fire(){
-            let bullet = new Bullets(200, "red");
 
-            bulletArray.push(bullet);
-        }
+        function init(){
+            let wrapper = document.createElement("div");
+            wrapper.style.width = width*count;
+            wrapper.style.height = height;
+            wrapper.style.position = "relative";
+            wrapper.style.background = "lightgray";
 
-       
-
-        function gameLoop(){
-            for (let i = 0; i < bulletArray.length; i++) {  // bulletArray.length로 반복문 실행 (수정된 부분)
-                bulletArray[i].move();  // 화살을 이동시킴
+            for(let i=0; i<count; i++) {
+                let n = parseInt(Math.random()*colorArray.length);
+                let bg = colorArray[par]
+                let rect = new Rects(wrapper, width*i, getRandom(height), width, height, 
+            colorArray[getRandom(colorArray.length-1)])
             }
         }
 
-
         addEventListener("load", function(){
-           let bt = document.querySelector("button");
-           bt.addEventListener("click", function(){
-                fire();
-           })
-            setInterval(gameLoop, 10);
+            init();
         });
     </script>
 </head>
 <body>
-    <button>발사</button>
     
 </body>
 </html>
