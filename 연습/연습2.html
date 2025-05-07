@@ -4,193 +4,37 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <style>
-        #wrapper{
-            width: 1000px;
-            height: 600px;
-            background-color: antiquewhite;
-            margin: auto;
-        }
-
-        #aside1{
-            width: 200px;
-            height: 100%;
-            background-color: aquamarine;
-            float: left;
-        }
-
-        #section{
-            width: 600px;
-            height: 100%;
-            float: left;
-        }
-
-        #header{
-            width: 100%;
-            height: 100px;
-            background-color: blueviolet;
-        }
-
-        #content{
-            width: 100%;
-            height: 500px;
-            background-color: thistle;
-        }
-
-        #aside2{
-            width: 200px;
-            height: 100%;
-            background-color: blue;
-            float: left;
-        }
-
-        form input {
-            height: 35px;
-            margin: 2px;
-            border: 1px solid #cccc;
-            border-radius: 3px;
-        }
-    </style>
+    <script src="./Bullets.js"></script>
 
     <script>
-        let content;
-        let memberArray = [];
-        let currnetIndex;
+        let bulletArray = [];
 
+        function fire(){
+            let bullet = new Bullets(200, "red");
 
-        function resist(){
-          let member = [];
-          member.push(form1.empno.value);
-          member.push(form1.ename.value);
-          member.push(form1.sal.value);
-          member.push(form1.comm.value);
-
-          memberArray.push(member);
-
-          form1.reset();
-
-          
-
+            bulletArray.push(bullet);
         }
 
-        function getDetail(index){
+       
 
-            currnetIndex = index;
-
-            form2.empno.value = memberArray[index][0];
-            form2.ename.value = memberArray[index][1];
-            form2.sal.value = memberArray[index][2];
-            form2.comm.value = memberArray[index][3];
-
-        }
-
-        function edit(){
-            memberArray[currnetIndex][0] = form2.empno.value;
-            memberArray[currnetIndex][1] = form2.ename.value;
-            memberArray[currnetIndex][2] = form2.sal.value;
-            memberArray[currnetIndex][3] = form2.comm.value;
-
-            printTable();
-        }
-
-        function printTable() {
-            let tag = "<table border = '1px' width = '100%'>";
-            tag = tag + "<tr align = 'center'>";
-            tag = tag + "<td>no</td>";
-            tag = tag + "<td>empno</td>";
-            tag = tag + "<td>ename</td>";
-            tag = tag + "<td>sal</td>";
-            tag = tag + "<td>comm</td>";
-            tag = tag + "</tr>";
-
-
-            for(let i=0; i<memberArray.length; i++) {
-
-                tag = tag + "<tr align = 'center' onClick = \"getDetail(" + i + ")\">";
-                
-                tag = tag + "<td>" + (i+1) + "</td>";
-
-                for(let a=0; a<memberArray[i].length; a++) {
-                    tag = tag + "<td>" + memberArray[i][a] + "</td>";
-                }
-             }
-
-            content.innerHTML = tag;
-
-
-        }
-
-        function del() {
-            memberArray.splice(currnetIndex, 1);
-            printTable();
+        function gameLoop(){
+            for (let i = 0; i < bulletArray.length; i++) {  // bulletArray.length로 반복문 실행 (수정된 부분)
+                bulletArray[i].move();  // 화살을 이동시킴
+            }
         }
 
 
-
-        
-
-
-        function init(){
-            content = document.getElementById("content");
-
-            printTable();
-
-            let bt_regist = document.querySelector("#aside1 input[type='button']");
-            bt_regist.addEventListener("click", function(){
-                resist();
-                printTable();
-            })
-
-            form2.bt_edit.addEventListener("click", function(){
-                if(confirm("정보수정")){
-                    edit();
-                }
-            });
-
-            form2.bt_del.addEventListener("click", function(){
-                if(confirm("정보삭제")) {
-                    if(currnetIndex = undefined){
-                        alert("null");
-                    } else{
-
-                        del();
-                    }
-                }
-            });
-
-        }
-
-       addEventListener("load", function(){
-        init();
-       });
+        addEventListener("load", function(){
+           let bt = document.querySelector("button");
+           bt.addEventListener("click", function(){
+                fire();
+           })
+            setInterval(gameLoop, 10);
+        });
     </script>
 </head>
 <body>
-    <div id="wrapper">
-        <div id="aside1">
-            <form name="form1">
-                <input type="text" name="empno" placeholder="사원번호 입력">
-                <input type="text" name="ename" placeholder="사원명 입력">
-                <input type="text" name="sal" placeholder="급여 입력">
-                <input type="text" name="comm" placeholder="커미션">
-                <input type="button" value="사원등록">
-            </form>
-        </div>
-        <div id="section">
-            <div id="header"></div>
-            <div id="content"></div>
-        </div>
-        <div id="aside2">
-            <form name="form2">
-                <input type="text" name="empno" placeholder="사원번호 입력">
-                <input type="text" name="ename" placeholder="사원명 입력">
-                <input type="text" name="sal" placeholder="급여 입력">
-                <input type="text" name="comm" placeholder="커미션">
-                <input type="button" name="bt_edit" value="사원수정">
-                <input type="button" name="bt_del" value="사원삭제">
-            </form>
-        </div>
-    </div>
+    <button>발사</button>
     
 </body>
 </html>
