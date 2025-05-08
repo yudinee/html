@@ -4,34 +4,71 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        #stage{
+            width: 1600px;
+            height: 576px;
+            background-image: url(../images/plane/bg.jpg);
+            background-size: 1600px 576px;
+            position: relative;
+            margin: auto;
+            overflow: hidden;
+        }
+    </style>
+
+    <script src="./Heroses.js"></script>
     <script>
-        let width = 20;
-        let height = 300;
-        let count = 15;
-        let colorArray = ["red", "orange", "yellow", "green", "blue", "navy", "purple"];
+
+        
+        let bgX = 0;
+        let hero;
 
 
-        function init(){
-            let wrapper = document.createElement("div");
-            wrapper.style.width = width*count;
-            wrapper.style.height = height;
-            wrapper.style.position = "relative";
-            wrapper.style.background = "lightgray";
+        function gameLoop(){
+            bgEffect();
+            hero.move();
+        }
 
-            for(let i=0; i<count; i++) {
-                let n = parseInt(Math.random()*colorArray.length);
-                let bg = colorArray[par]
-                let rect = new Rects(wrapper, width*i, getRandom(height), width, height, 
-            colorArray[getRandom(colorArray.length-1)])
-            }
+        function bgEffect(){
+           let stage = document.getElementById("stage");
+            stage.style.backgroundPosition = `${bgX--}px 0px`;
+        }
+
+        function createHero(){
+            
+            hero = new Heroses(document.getElementById("stage"), 100, 200, 100, 100, 0,0);
         }
 
         addEventListener("load", function(){
-            init();
+            createHero();
+            setInterval(gameLoop, 10);
+
+            addEventListener("keydown", function(e){
+
+                switch(e.keyCode){
+                    case 37: hero.velX = -5; break;
+                    case 38: hero.velY = -5; break;
+                    case 39: hero.velX = 5; break;
+                    case 40: hero.velY = 5; break;
+                }
+            });
+
+             addEventListener("keyup", function(e){
+
+                switch(e.keyCode){
+                    case 37: hero.velX = 0; break;
+                    case 38: hero.velY = 0; break;
+                    case 39: hero.velX = 0; break;
+                    case 40: hero.velY = 0; break;
+                }
+            });
+
+            
+
         });
     </script>
 </head>
 <body>
-    
+    <div id="stage"></div>
 </body>
 </html>

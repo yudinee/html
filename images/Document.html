@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<!-- saved from url=(0074)http://127.0.0.1:5500/js/day0508/%EC%8A%88%ED%8C%85%EA%B2%8C%EC%9E%84.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #stage{
+            width: 1920px;
+            height: 576px;
+            background-image: url(../../images/plane/bg.jpg);
+            margin: auto;
+        }
+    </style>
+    <script src="./Document_files/Hero.js.다운로드"></script>
+    <script>
+        let bgX = 0; //감소시켜야돼서 전역변수
+
+        //stage의 배경의 left값을 감소
+        function bgEffect(){
+            let stage = document.getElementById("stage");
+            stage.style.backgroundPosition = `${bgX--}px 0px`;
+        }
+
+        function gameLoop(){
+            bgEffect();
+        }
+
+        /*자바스크립트의 함수 정의 유형은 3가지
+        1) 선언적 방법에 의한 함수 선언 funtion test() {}
+        2) 표현식에 의한 함수 선언 let test = funtion() {} 
+        3) 화살표 함수(람다식) = () => {화살표함수는 this 보유 불가
+                                     따라서 화살표함수 영역에서 사용되는 this는 나를가리키는
+                                     것이 아니라 상위 스코프를 가리킨다.
+        }
+        */
+        addEventListener("load", () => {
+            //화살표 함수가 자체적인 this를 가질 수 없기 때문에, 바깥쪽 스코프(영역)인
+            //전역 영역을 가리키게 되고, js언어에서 전역정보는 window객체가 보우하여
+            //window객체가 js언어의 최상위 객체이다.
+            console.log(this); //화살표 함수 this 못가져서상위 스코프인 window 나옴
+            setInterval(gameLoop, 10);
+           
+        });
+    </script>
+</head>
+<body>
+    <div id="stage" style="background-position: -1221px 0px;"><img src="http://127.0.0.1:5500/images/hero/image5.png" style="position: absolute; left: 100px; top: 100px; width: 100px; height: 100px;"></div>
+<!-- Code injected by live-server -->
+<script>
+	// <![CDATA[  <-- For SVG support
+	if ('WebSocket' in window) {
+		(function () {
+			function refreshCSS() {
+				var sheets = [].slice.call(document.getElementsByTagName("link"));
+				var head = document.getElementsByTagName("head")[0];
+				for (var i = 0; i < sheets.length; ++i) {
+					var elem = sheets[i];
+					var parent = elem.parentElement || head;
+					parent.removeChild(elem);
+					var rel = elem.rel;
+					if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
+						var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
+						elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
+					}
+					parent.appendChild(elem);
+				}
+			}
+			var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
+			var address = protocol + window.location.host + window.location.pathname + '/ws';
+			var socket = new WebSocket(address);
+			socket.onmessage = function (msg) {
+				if (msg.data == 'reload') window.location.reload();
+				else if (msg.data == 'refreshcss') refreshCSS();
+			};
+			if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
+				console.log('Live reload enabled.');
+				sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
+			}
+		})();
+	}
+	else {
+		console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
+	}
+	// ]]>
+</script>
+
+</body></html>
