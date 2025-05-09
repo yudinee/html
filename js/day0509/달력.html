@@ -92,6 +92,8 @@
                     let cell = cellArrray[count];
                     // cell.div.innerText = count; -> if문 만들기 전에 count잘 찍히나 출력
 
+                    //5월이 배열로 치면 4부터 시작, count 4가 getStartDay 보다 크고
+                    //n이 31 or 30보다 작으면 동작
                     if(count >= getStartDay(currentYear, currentMonth) && n < getLastDate(currentYear, currentMonth)) {
                          n++; //1씩 증가를 아무때나 하지 말고 해당 월의 count가 시작요일을 만나면 증가 
                          cell.div.innerText = n;
@@ -101,7 +103,7 @@
             }
         }
 
-        //현재 날짜 얻어오기
+        //현재 날짜 얻어오기 (처음에 현재 날짜 얻어오기, 초기화 용!!)
         function getCurrentDate(){
             let d = new Date();
             currentYear = d.getFullYear();
@@ -113,6 +115,9 @@
         function printTitle(yy,mm){
             //다음, 이전 버튼 누를 때마다 호출할 것이므로 연, 월 매개변수로 변하게 하자
 
+            //여기서 new Date해서 값을 또 받아오는 이유는 이전, 다음 누를 때 값이 바뀌어야 해서
+            //printTitle()의 매개변수를 Date()매개변수로 넣어준다. 
+            //Date는 printTitle()안에 있어서 매개변수를 전달받을 수 있음
             let d = new Date(yy,mm);
             let currentYear=d.getFullYear();
             let currentMonth=d.getMonth();
