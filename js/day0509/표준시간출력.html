@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../../lib/common.js"></script>
+    <style>
+        /* 똑같은 디자인으로 할거면 , 로 연결 */
+        #hour, #min, #sec{
+            font-size: 80px;
+            color: red;
+            background-color: rgb(248, 232, 212);
+            width: 120px;
+            height: 120px;
+            border: 2px solid gray;
+            border-radius: 3px;
+            display: inline-block; /*옆으로 나란히 나오게*/
+            text-align: center; /*안에 글자 가운데 정렬*/
+        }
+    </style>
+
+    <script>
+
+        //표현식에 의한 함수 정의(함수를 데이터처럼 받을 수 있다.)
+        let showTime = function(){
+            let d = new Date();
+
+            
+            let h = d.getHours();//시간 정보 중 시간만 추출
+            let hour = document.getElementById("hour");
+            hour.innerText = zeroString(h);
+            
+            let m = d.getMinutes();
+            let min = document.getElementById("min");
+            min.innerText = zeroString(m);
+
+            let s = d.getSeconds();
+            let sec = document.getElementById("sec");
+            sec.innerText = zeroString(s);
+
+
+        }
+
+        addEventListener("load", ()=>{
+            setInterval(showTime, 1000);
+        });
+    </script>
+</head>
+<body>
+    <div id="hour"></div>
+    <div id="min"></div>
+    <div id="sec"></div>
+</body>
+</html>

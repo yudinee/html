@@ -1,0 +1,23 @@
+<script>
+
+    /*js의 함수의 정의 방법 3가지
+    1) 함수 표현식 (expression) -> 표현식은 데이터 반환을 함  ex) let x = 3; -> 3을 반환함
+
+    */
+
+    let test=function(){
+        let d = new Date();
+        console.log(d.getFullYear(), d.getMonth()+1, d.getDay(), d.getHours(), d.getMinutes(), d.getSeconds());
+        //d.getMonth()+1 -> w3school에서 보면 getMonth는 0~11이여서 +1해줘야함
+        //d.getFullYear() -> w3school에서 getYear()는 곧 없어질 거라 getFullYear쓰라고 알려줌
+    }
+
+    //반복문은 너무 빨라서 setInterval로 ()괄호 안에는 함수 정의 적기
+    //호출과 정의의 차이점 -> 호출은 setInterval을 무시하고 test를 호출해버림
+    //test혹은 "test()"하면 정의, test()하면 호출
+    //setInterval의 첫번째 매개변수로 함수를 넘겨줄 때 호출이 아닌 함수명 또는 함수정의가 와야한다.
+    //만일 test()해서 호출하면 setInterval에게 호출을 맡기는게 아니라 바로 호출이 되어버린다.
+    setInterval(test, 1000)
+    //1초뒤에 내가 정의해 놓은 test함수를 setInterval이 호출해줘
+
+</script>
